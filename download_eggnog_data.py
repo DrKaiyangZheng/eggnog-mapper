@@ -49,7 +49,7 @@ def download_taxa(data_path):
     url = BASE_URL + '/eggnog.taxa.tar.gz'
     cmd = (
         f'cd {data_path} && '
-        f'wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog.taxa.tar.gz {url} && '
+        f'wget -c -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog.taxa.tar.gz {url} && '
         f'echo Decompressing... && '
         f'tar -zxf eggnog.taxa.tar.gz && '
         f'rm eggnog.taxa.tar.gz'
@@ -62,7 +62,7 @@ def download_diamond_db(data_path):
     url = BASE_URL + '/eggnog_proteins.dmnd.gz'
     cmd = (
         f'cd {data_path} && '
-        f'wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog_proteins.dmnd.gz {url} && '
+        f'wget -c -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog_proteins.dmnd.gz {url} && '
         f'echo Decompressing... && '
         f'gunzip eggnog_proteins.dmnd.gz {gunzip_flag()}'
     )
@@ -74,7 +74,7 @@ def download_novel_fams_diamond_db(data_path):
     url = NOVEL_FAMS_BASE_URL + '/novel_fams.dmnd.gz'
     cmd = (
         f'cd {data_path} && '
-        f'wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O novel_fams.dmnd.gz {url} && '
+        f'wget -c -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O novel_fams.dmnd.gz {url} && '
         f'echo Decompressing... && '
         f'gunzip novel_fams.dmnd.gz {gunzip_flag()}'
     )
@@ -85,7 +85,7 @@ def download_novel_fams_annots_db(data_path):
     url = NOVEL_FAMS_BASE_URL + '/novel_fams.pkl.gz'
     cmd = (
         f'cd {data_path} && '
-        f'wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O novel_fams.pkl.gz {url} && '
+        f'wget -c -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O novel_fams.pkl.gz {url} && '
         f'echo Decompressing... && '
         f'gunzip novel_fams.pkl.gz {gunzip_flag()}'
     )
@@ -98,7 +98,7 @@ def download_mmseqs_db(data_path):
     url = BASE_URL + '/mmseqs.tar.gz'
     cmd = (
         f'cd {data_path} && '
-        f'wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O mmseqs.tar.gz {url} && '
+        f'wget -c -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O mmseqs.tar.gz {url} && '
         f'echo Decompressing... && '
         f'tar -zxf mmseqs.tar.gz && '
         f'rm mmseqs.tar.gz'
@@ -111,7 +111,7 @@ def download_pfam_db(data_path):
     url = BASE_URL + '/pfam.tar.gz'
     cmd = (
         f'cd {data_path} && '
-        f'wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O pfam.tar.gz {url} && '
+        f'wget -c -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O pfam.tar.gz {url} && '
         f'echo Decompressing... && '
         f'tar -zxf pfam.tar.gz && '
         f'rm pfam.tar.gz'
@@ -146,7 +146,7 @@ def download_hmm_database(level, dbname, dbpath):
     cmd = (
         f'cd {dbpath}; '
         f'echo Downloading HMMs... && '
-        f'wget {flag} -nH --user-agent=Mozilla/5.0 --relative -r --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off {hmmsurl} && '
+        f'wget {flag} -c -nH --user-agent=Mozilla/5.0 --relative -r --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off {hmmsurl} && '
         f'echo Decompressing HMMs... && '
         f'tar zxf {level}_hmms.tar.gz && '
         f'echo {level}/* | xargs mv -t ./ && rm -r {level} && '
@@ -176,7 +176,7 @@ def download_hmm_database(level, dbname, dbpath):
     cmd = (
         f'cd {dbpath}; '
         f'echo Downloading FASTAs... && '
-        f'wget {flag} -nH --user-agent=Mozilla/5.0 --relative -r --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off {seqsurl} && '
+        f'wget {flag} -c -nH --user-agent=Mozilla/5.0 --relative -r --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off {seqsurl} && '
         f'echo Decompressing FASTAs... && '
         f'tar xf {level}_raw_algs.tar && '
         f'echo {level}/* | xargs mv -t ./ && rm -r {level} && '
